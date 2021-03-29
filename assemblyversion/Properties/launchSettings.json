@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "assemblyversion": {
+      "commandName": "Project",
+      "commandLineArgs": "\"D:\\Progetti\\Lavazza\\pcvmilk\\PcvMilk\" pre-build"
+    }
+  }
+}
