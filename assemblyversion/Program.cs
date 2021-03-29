@@ -52,7 +52,10 @@ namespace assemblyversion
             string bVersion = regex.Match(version).Value + ".{0}";
             regex = new Regex("(?<=\\-).\\d?(?=\\-)");
             // add build
-            bVersion = string.Format(bVersion, regex.Match(version).Value);
+            string buildVersion = regex.Match(version).Value;
+            if (buildVersion == "") buildVersion = "0";
+            bVersion = string.Format(bVersion, buildVersion);
+
             return bVersion;
         }
 
@@ -127,12 +130,12 @@ namespace assemblyversion
                         // save a copy
                         File.WriteAllText(filePath + ".ori", content);
                         // replace file version
-                        content = replaceTag("AssemblyFileVersion", versionBase);
+                        content = replaceTag("AssemblyVersion", versionBase);
                         // version dirty
                         if (version.Contains("-dirty"))
-                            content = replaceTag("AssemblyVersion", version);
+                            content = replaceTag("AssemblyFileVersion", version);
                         else
-                            content = replaceTag("AssemblyVersion", versionBase);
+                            content = replaceTag("AssemblyFileVersion", versionBase);
 
                         // write description file alphanumeric
                         content = replaceTag("AssemblyDescription", description + " " + version);
