@@ -57,8 +57,8 @@ jobs:
 
     env:
       ACTIONS_ALLOW_UNSECURE_COMMANDS: true
-      Solution_Name: assemblyVersion                                      # Replace with your solution name, i.e. MyWpfApp.sln.
-      Test_Project_Path: assemblyVersion/test                             # Replace with the path to your test project, i.e. MyWpfApp.Tests\MyWpfApp.Tests.csproj.
+      Solution_Name: assemblyVersion.sln                                  # Replace with your solution name, i.e. MyWpfApp.sln.
+      Test_Project_Path: assemblyVersion/test.csproj                      # Replace with the path to your test project, i.e. MyWpfApp.Tests\MyWpfApp.Tests.csproj.
       Wap_Project_Directory: assemblyVersion.package                      # Replace with the Wap project directory relative to the solution, i.e. MyWpfApp.Package.
       Wap_Project_Path: assemblyVersion.package\assemblyVersion.wapproj   # Replace with the path to your Wap project, i.e. MyWpf.App.Package\MyWpfApp.Package.wapproj.
 
