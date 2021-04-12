@@ -46,14 +46,25 @@ namespace assemblyversion
         // retrive numeric base version
         static string getVersionBase(string version)
         {
-            // from git version v2.0.0.0-5-sdfsdfsdf"
+            // from git version v2.0.5.1-3-sdfsdfsdf"
+            // result final release 2.0.5.2  1-3 ( 1 + 3 = 4 )
             string pattern = "\\d\\.\\d.\\d";
             Regex regex = new Regex(pattern);
             string bVersion = regex.Match(version).Value + ".{0}";
+
+            // check total release ( Patch release )
+            pattern = "\\d\\.\\d.\\d.(\\d)";
+            regex = new Regex(pattern);
+            string patch = regex.Match(version).Groups[1].Value;
+
             regex = new Regex("(?<=\\-).\\d?(?=\\-)");
             // add build
             string buildVersion = regex.Match(version).Value;
-            if (buildVersion == "") buildVersion = "0";
+            if (buildVersion == "")
+                buildVersion = patch;                
+            else
+                buildVersion = (int.Parse(patch) + int.Parse(buildVersion)).ToString();
+
             bVersion = string.Format(bVersion, buildVersion);
 
             return bVersion;
